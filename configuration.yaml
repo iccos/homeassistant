@@ -23,20 +23,6 @@ input_datetime:
     has_date: false
     has_time: true 
 
-#google_assistant:
-#  project_id: homeautomation-37a3a
-#  client_id: [long URL safe random string]
-#  access_token: [a different long URL safe random string]
-#  agent_user_id: [a string to identify user]
-#  api_key: [an API Key generated for the Google Actions project]
-#  exposed_domains:
-#    - switch
-#    - light
-#    - group    
-    
-    
-    
- 
 #---------------------Componentes Diversos-------
 
 config:
@@ -220,12 +206,7 @@ notify:
   - name: Notifica Telegram
     platform: telegram
     chat_id: 166403351
-    
-#  - name: Notifica Telegram 2
-#    platform: telegram
-#    chat_id: 474880777
 
-    
   - name: Notifica Face
     platform: facebook
     page_access_token: !secret face
