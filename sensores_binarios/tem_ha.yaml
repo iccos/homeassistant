@@ -1,0 +1,5 @@
+platform: threshold
+threshold: 37
+type: upper
+entity_id: sensor.cpu_temperature
+name: Check Temperatura HA

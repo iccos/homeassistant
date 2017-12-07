@@ -1,0 +1,45 @@
+
+leeco:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Denis Nobre - Leeco
+  picture:
+  track: true
+  vendor:
+
+s4:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Elida
+  picture:
+  track: true
+  vendor:
+
+denis_leeco:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Denis - Leeco
+  picture:
+  track: true
+  vendor:
+
+elida_samsung:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Elida - Samsung
+  picture:
+  track: true
+  vendor:
+
+denis_s5:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Denis - S5
+  picture:
+  track: true
+  vendor:

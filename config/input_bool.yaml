@@ -1,0 +1,17 @@
+auto_tv:
+  initial: on
+  
+chrom_auto:
+  initial: off
+
+recept:
+  initial: off
+  
+ctrl_vol_mais:
+  initial: off
+  
+ctrl_vol_mais_reset:
+  initial: off  
+  
+ctrl_ar_con:
+  initial: on

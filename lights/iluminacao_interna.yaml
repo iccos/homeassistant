@@ -1,0 +1,43 @@
+- platform: mqtt
+  name: "Iluminação Cozinha"
+  payload_on: "on"
+  payload_off: "off"
+  state_topic: "stat/cozinha-luz/RESULT"
+  command_topic: "cmnd/cozinha-luz/POWER"
+  optimistic: true
+  qos: 1
+  retain: true
+  icon: mdi:television-classic
+  
+- platform: mqtt
+  name: "Iluminação Sala"
+  payload_on: "on"
+  payload_off: "off"
+  state_topic: "stat/luz-sala/RESULT2"
+  command_topic: "cmnd/luz-sala/POWER2"
+  optimistic: true
+  qos: 1
+  retain: true
+  icon: mdi:television-classic 
+  
+- platform: mqtt
+  name: "Iluminação Corredor"
+  payload_on: "on"
+  payload_off: "off"
+  state_topic: "stat/luz-sala/RESULT1"
+  command_topic: "cmnd/luz-sala/POWER1"
+  optimistic: true
+  qos: 1
+  retain: true
+  icon: mdi:television-classic
+  
+- platform: mqtt
+  name: "Iluminação Quarto Casal"
+  payload_on: "on"
+  payload_off: "off"
+  state_topic: "stat/luz-casal/RESULT"
+  command_topic: "cmnd/luz-casal/POWER"
+  optimistic: true
+  qos: 1
+  retain: true
+  icon: mdi:television-classic

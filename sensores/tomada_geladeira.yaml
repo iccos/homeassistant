@@ -1,0 +1,26 @@
+platform: template
+sensors:
+  tensao:
+    value_template: '{{ states.switch.tomada_geladeira.attributes["voltage"]}}'
+    unit_of_measurement: " "
+    friendly_name: Tensão
+    
+  corrente:
+    value_template: '{{ states.switch.tomada_geladeira.attributes["current"] }}'
+    unit_of_measurement: " "
+    friendly_name: Corrente
+    
+  consumo:
+    value_template: '{{ states.switch.tomada_geladeira.attributes["daily_consumption"] }}'
+    unit_of_measurement: " "
+    friendly_name: Consumo
+    
+  potencia:
+    value_template: '{{ states.switch.tomada_geladeira.attributes["current_consumption"] }}'
+    unit_of_measurement: " "
+    friendly_name: Potencia
+    
+  cons_semanal:
+    value_template: '{{ states.switch.tomada_geladeira.attributes["total_consumption"] }}'
+    unit_of_measurement: " "
+    friendly_name: Consumo Mensal

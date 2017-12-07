@@ -1,0 +1,30 @@
+platform: template
+sensors:
+  tensao_ar:
+    value_template: '{{ states.switch.tomada_ar.attributes["voltage"].split(" ")[0] }}'
+    unit_of_measurement: " "
+    friendly_name: Tensão
+    
+  corrente_ar:
+    value_template: '{{ states.switch.tomada_ar.attributes["current"].split(" ")[0] }}'
+    unit_of_measurement: " "
+    friendly_name: Corrente
+    
+  consumo_ar:
+    value_template: '{{ states.switch.tomada_ar.attributes["daily_consumption"].split(" ")[0] }}'
+    unit_of_measurement: " "
+    friendly_name: Consumo
+    
+  potencia_ar:
+    value_template: '{{ states.switch.tomada_ar.attributes["current_consumption"].split(" ")[0] }}'
+    unit_of_measurement: " "
+    friendly_name: Potencia
+    
+  cons_semanal_ar:
+    value_template: '{{ states.switch.tomada_ar.attributes["total_consumption"].split(" ")[0] }}'
+    unit_of_measurement: " "
+    friendly_name: Consumo Mensal
+  
+  total_ciclo:
+    value_template: '{{states.counter.ciclo_alarme.state}}'
+    friendly_name: Total de Ciclo

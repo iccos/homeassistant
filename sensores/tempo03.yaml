@@ -1,0 +1,4 @@
+platform: yweather
+monitored_conditions:
+  - weather
+  - weather_current

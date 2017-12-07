@@ -1,0 +1,5 @@
+platform: onvif
+host: http://noobres.homedns.org:91
+name: 'Camera Secundaria'
+username: 'admin'
+password: 'admin'

@@ -1,0 +1,4 @@
+platform: scrape
+name: HA Versao Disponivel
+resource: https://home-assistant.io
+select: ".current-version h1"

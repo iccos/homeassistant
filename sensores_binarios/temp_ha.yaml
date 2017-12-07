@@ -1,0 +1,7 @@
+platform: template
+sensors:
+  device_critical:
+    value_template: "{{ states('sensor.cpu_temperature')|float > 37}}"
+    friendly_name: Status Temperatura HA
+    device_class: heat
+    

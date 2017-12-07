@@ -1,0 +1,96 @@
+- alias: Volume LG +
+  trigger:
+    platform: state
+    entity_id: input_boolean.vol_mais_lg
+    from: 'off'
+    to: 'on'
+  action:
+    service: script.scr_aumenta_volume  
+    
+    
+- alias: Volume LG -
+  trigger:
+    platform: state
+    entity_id: input_boolean.vol_menos_lg
+    from: 'off'
+    to: 'on'
+  action:
+    service: script.scr_diminui_volume
+    
+- alias: TV On
+  trigger:
+    platform: time
+    minutes: /1
+    seconds: 0
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: state
+        entity_id: input_boolean.auto_tv
+        state: 'on'
+      - condition: template
+        value_template: '{{ now().strftime("%H:%M") == states.sensor.horas_liga_tv.state }}'
+  action:
+    service: script.scr_acordando
+    
+- alias: TV off
+  trigger:
+    platform: time
+    minutes: /1
+    seconds: 0
+  condition:
+    condition: and
+    conditions:
+      - condition: time
+        weekday:
+          - mon
+          - tue
+          - wed
+          - thu
+          - fri
+      - condition: state
+        entity_id: input_boolean.auto_tv
+        state: 'on'
+      - condition: template
+        value_template: '{{ now().strftime("%H:%M") == states.sensor.horas_desliga_tv.state }}'
+  action:
+    service: script.scr_trabalhar
+    
+- alias: Liga Receptor
+  trigger: 
+    platform: state
+    entity_id: input_boolean.recept
+    from: 'off'
+    to: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.chromecast
+    - delay: '00:00:01'
+    - service: homeassistant.turn_on
+      entity_id: switch.receptor
+    - delay: '00:00:05'
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.recept
+      
+- alias: Liga ChromeCast
+  trigger: 
+    platform: state
+    entity_id: input_boolean.chrom_auto
+    from: 'off'
+    to: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.receptor
+    - delay: '00:00:01'
+    - service: homeassistant.turn_on
+      entity_id: switch.chromecast
+    - delay: '00:00:05'
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.chrom_auto

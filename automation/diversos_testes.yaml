@@ -1,0 +1,9 @@
+- alias: Teste Timer
+  trigger:
+    platform: event
+    event_type: timer.finished
+    event_data:
+      entity_id: timer.timer
+  action:
+    service: input_boolean.turn_on
+    entity_id: input_boolean.ctrl_vol_mais

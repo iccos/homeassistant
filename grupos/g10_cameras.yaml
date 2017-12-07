@@ -1,0 +1,11 @@
+grp_10:
+  name: Android Cam
+  view: false
+  icon: mdi:camera
+  entities:
+    - sensor.leeco_cam_audio_connections
+    - sensor.leeco_cam_video_connections
+    - sensor.s5_cam_audio_connections
+    - sensor.s5_cam_video_connections
+    - sensor.tablet_cam_audio_connections
+    - sensor.tablet_cam_video_connections

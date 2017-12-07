@@ -1,0 +1,36 @@
+
+- cal_id: noobres@gmail.com
+  entities:
+  - device_id: noobresgmailcom
+    name: noobres@gmail.com
+    track: true
+
+- cal_id: bitmaissolucoes@gmail.com
+  entities:
+  - device_id: bit_solucoes__calendario_de_treinamentos
+    name: "Bit+ Solu\xE7\xF5es - Calend\xE1rio de Treinamentos"
+    track: true
+
+- cal_id: 72re7386bj3gqav5mbl9q022uk@group.calendar.google.com
+  entities:
+  - device_id: todoist
+    name: Todoist
+    track: true
+
+- cal_id: '#contacts@group.v.calendar.google.com'
+  entities:
+  - device_id: contacts
+    name: Contacts
+    track: true
+
+- cal_id: pt.brazilian#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: holidays_in_brazil
+    name: Holidays in Brazil
+    track: true
+
+- cal_id: s9ccqskdsqqrtltn1aj08nnup0@group.calendar.google.com
+  entities:
+  - device_id: homeautomation
+    name: HomeAutomation
+    track: true

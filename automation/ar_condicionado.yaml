@@ -1,0 +1,108 @@
+
+- alias: Ar Condicionado - Desliga
+  initial_state: "on"
+  trigger:
+    platform: time
+    minutes: /20
+    seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+    - condition: time
+      after: '23:00:00'
+      before: '06:00:00'
+    - condition: numeric_state
+      entity_id: sensor.temperature_158d0001d6f829
+      below: 24
+    - condition: state
+      entity_id: input_boolean.ctrl_ar_con
+      state: 'on'
+  action:
+    - service: script.turn_on
+      entity_id: script.scr_ar_con_off
+ 
+#--------------------------------------------------------------------
+
+# ----- Temperatura Acima de de 27 graus Ar Condicionado Gela -----
+
+- alias: Ar Condicionado - Resfria
+  initial_state: "on"
+  trigger:
+    platform: time
+    minutes: /20
+    seconds: 0
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+        - sat
+        - sun
+    - condition: time
+      after: '23:00:00'
+      before: '06:00:00'
+    - condition: numeric_state
+      entity_id: sensor.temperature_158d0001d6f829
+      above: 26
+    - condition: state
+      entity_id: input_boolean.ctrl_ar_con
+      state: 'on'
+  action:
+    - service: script.turn_on
+      entity_id: script.scr_ar_con_on
+
+#--------------------------------------------------------------------
+
+- alias: Desliga Ar Acordando
+  trigger:
+    platform: time
+    at: '00:06:15'
+  action:
+    - service: script.turn_on
+      entity_id: script.scr_ar_con_off
+      
+#-------------------------------------------------------------------- 
+
+- alias: Seta Ar On
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d00016d7b12
+        click_type: double
+  condition: 
+    - condition: state
+      entity_id: switch.controle_ar_condicionado
+      state: 'off'
+  action:
+    - service: script.turn_on
+      entity_id: script.scr_ar_con_on
+    - service: homeassistant.turn_on
+      entity_id: input_boolean.ctrl_ar_con
+      
+- alias: Seta Ar Off
+  trigger:
+    - platform: event
+      event_type: click
+      event_data:
+        entity_id: binary_sensor.switch_158d00016d7b12
+        click_type: double
+  condition: 
+    - condition: state
+      entity_id: switch.controle_ar_condicionado
+      state: 'on'
+  action:
+    - service: script.turn_on
+      entity_id: script.scr_ar_con_off
+    - service: homeassistant.turn_off
+      entity_id: input_boolean.ctrl_ar_con

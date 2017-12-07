@@ -1,0 +1,6 @@
+graf_temp_ha:
+  name: Acompanhamento Temperatura HA
+  entities:
+    - sensor.cpu_temperature
+  hours_to_show: 48
+  refresh: 30

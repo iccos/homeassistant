@@ -1,0 +1,6 @@
+platform: yweather
+monitored_conditions:
+  - temp_min
+  - temp_max
+  - humidity
+  - temperature

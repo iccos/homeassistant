@@ -1,0 +1,330 @@
+homeassistant:
+  name: Noobres Home
+  latitude: !secret lat
+  longitude: !secret long
+  elevation: 676
+  unit_system: metric
+  time_zone: America/Sao_Paulo
+  customize: !include_dir_merge_named custom
+  
+#---------------------Testes--------------------- 
+
+input_datetime:
+  both_date_and_time:
+    name: Input with both date and time
+    has_date: true
+    has_time: true
+  only_date:
+    name: Input with only date
+    has_date: true
+    has_time: false
+  only_time:
+    name: Input with only time
+    has_date: false
+    has_time: true 
+
+#google_assistant:
+#  project_id: homeautomation-37a3a
+#  client_id: [long URL safe random string]
+#  access_token: [a different long URL safe random string]
+#  agent_user_id: [a string to identify user]
+#  api_key: [an API Key generated for the Google Actions project]
+#  exposed_domains:
+#    - switch
+#    - light
+#    - group    
+    
+    
+    
+ 
+#---------------------Componentes Diversos-------
+
+config:
+
+logger:
+
+updater:
+  include_used_components: true
+
+history:
+
+logbook:
+  include:
+    domains:
+      - sensor
+      - switch
+      - automation
+      - script
+
+sun:
+
+ffmpeg:
+  ffmpeg_bin: /usr/bin/avconv
+
+map:
+
+discovery:
+
+#-------------------------------------------------
+
+#---------------------Frontend--------------------
+
+frontend:
+  javascript_version: latest
+  
+  themes:
+  
+    dark:
+      primary-color: "#396FB6"
+    red:
+      primary-color: "#f44336"
+    pink:
+      primary-color: "#e91e63"
+    purple:
+      primary-color: "#9c27b0"
+    deep-purple:
+      primary-color: "#673ab7"
+    indigo:
+      primary-color: "#3f51b5"
+    blue:
+      primary-color: "#2196f3"
+    light-blue:
+      primary-color: "#03a9f4"
+    cyan:
+      primary-color: "#00bcd4"
+    teal:
+      primary-color: "#009688"
+    green:
+      primary-color: "#4caf50"
+    light-green:
+      primary-color: "#8bc34a"
+    lime:
+      primary-color: "#cddc39"
+    yellow:
+      primary-color: "#ffeb3b"
+    amber:
+      primary-color: "#ffc107"
+    orange:
+      primary-color: "#ff9800"
+    deep-orange:
+      primary-color: "#ff5722"
+    brown:
+      primary-color: "#795548"
+    grey:
+      primary-color: "#9e9e9e"
+    blue-grey:
+      primary-color: "#607d8b"
+    sad:
+      primary-color: blue
+
+
+#---------------------Timer-----------------------
+
+timer:
+  timer:
+    duration: '00:01:00'
+
+#---------------------Xiaomi----------------------
+
+xiaomi_aqara:
+  discovery_retry: 10
+  gateways:
+   - mac: 34CE00813667
+     key: !secret xiaomi
+
+#---------------------HTTP------------------------
+
+http:
+  api_password: !secret http_senha
+  trusted_networks:
+   - 127.0.0.1
+   - 192.168.2.0/24
+  server_port: 80
+  base_url: noobres.homedns.org
+  
+#---------------------Metereologia----------------
+
+weather:
+  - platform: yweather
+
+#---------------------Telegram--------------------
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram
+    allowed_chat_ids:
+      - 166403351
+      - 474880777
+  - platform: broadcast
+    api_key: !secret telegram
+    allowed_chat_ids:
+      - 166403351
+      - 474880777
+  - platform: webhooks
+    api_key: !secret telegram
+    parse_mode: html
+    allowed_chat_ids:
+      - 166403351  
+      - 474880777      
+
+#---------------------Thinger---------------------
+
+thingspeak:
+  api_key: !secret thing1
+  id: 368190
+  whitelist: sensor.potencia_ar
+  
+#---------------------MQTT------------------------
+
+mqtt:
+  discovery: true
+  broker: localhost
+  port: 1883
+  username: mqtt_user
+  password: !secret mqtt
+
+#---------------------Device Track----------------
+
+device_tracker:
+ - platform: ping
+   hosts:
+     leeco: 192.168.2.20
+     s4: 192.168.2.22
+   count: 10
+ - platform: owntracks_http
+ 
+#---------------------Media Player----------------
+
+media_player:
+  - platform: cast
+  - platform: mpchc
+    host: http://192.168.2.103
+  
+#---------------------Econcms History------------
+
+emoncms_history:
+  api_key: !secret econ
+  url: https://emoncms.org
+  inputnode: 19
+  whitelist:
+    - sensor.cpu_temperature
+    - sensor.tensao_ar
+ 
+#---------------------Notificacoes----------------
+
+notify:
+  - name: Android Notificacoes
+    platform: nma
+    api_key: !secret android_notifica
+    
+  - name: Notifica Telegram
+    platform: telegram
+    chat_id: 166403351
+    
+#  - name: Notifica Telegram 2
+#    platform: telegram
+#    chat_id: 474880777
+
+    
+  - name: Notifica Face
+    platform: facebook
+    page_access_token: !secret face
+    
+  - name: Notifica Texto
+    platform: file
+    filename: logs.txt
+    timestamp: true
+
+#---------------------Calendar--------------------
+
+calendar:
+  - platform: todoist
+    token: !secret chave_todoist
+    name: Tarefas Diárias
+
+#---------------------Weblinks--------------------
+
+panel_iframe:
+  router:
+    title: Roteador
+    url: 'http://192.168.2.1'
+    icon: mdi:router-wireless
+  fridge:
+    title: Sonoff Luz Cozinha
+    url: 'http://192.168.2.68'
+    icon: mdi:responsive
+  fridge2:
+    title: Sonoff Luz Sala
+    url: 'http://192.168.2.90'
+    icon: mdi:responsive
+  fridge3:
+    title: Sonoff Luz Quarto Casal
+    url: 'http://192.168.2.65'
+    icon: mdi:responsive
+
+#---------------------Google----------------------
+
+google:
+  client_id: !secret google_cli_id
+  client_secret: !secret google_cli_sec
+
+#---------------------System Log------------------
+
+system_log:
+  max_entries: 100
+
+
+#---------------------TTS-------------------------
+
+tts:
+  - platform: google
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 3600
+
+#---------------------Counter---------------------
+
+counter:
+  ciclo_alarme:
+    initial: 0
+    step: 1
+
+#---------------------IFTTT-----------------------
+
+ifttt:
+  key: !secret ifttt
+
+#---------------------Includes--------------------
+
+group: !include config/grupos.yaml
+
+automation: !include_dir_merge_list automation
+
+history_graph: !include_dir_merge_named graficos
+
+script: !include_dir_merge_named scripts
+
+switch: !include config/switch.yaml
+
+input_boolean: !include config/input_bool.yaml
+
+sensor: !include_dir_list sensores
+
+binary_sensor: !include_dir_list sensores_binarios
+
+input_select: !include config/select.yaml
+
+input_number: !include config/numeros.yaml
+
+zone: !include config/locais.yaml
+
+camera: !include_dir_list cameras
+
+input_text: !include config/textos.yaml
+
+android_ip_webcam: !include_dir_merge_named android_cam
+
+light: !include_dir_merge_list lights
+
+#-------------------------------------------------
+

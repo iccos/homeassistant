@@ -1,0 +1,36 @@
+platform: template
+sensors:
+  horas_liga_rel:
+    friendly_name: Horas Liga Relogio
+    value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.slid_hora_liga") | int, states("input_number.slid_minuto_liga") | int) }}'
+    unit_of_measurement: " "
+    
+  horas_desliga_rel:
+    friendly_name: Horas Desliga Relogio
+    value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.slid_hora_desliga") | int, states("input_number.slid_minuto_desliga") | int) }}'
+    unit_of_measurement: " "
+    
+  tempo_acoes:
+    friendly_name: Tempo entre Acoes (s)
+    value_template: '{{ states.input_number.slid_tempo_acoes.state | int}}'
+    unit_of_measurement: "s"
+    
+  horas_liga_fundo:
+    friendly_name: Horas Liga Relogio
+    value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.slid_hora_liga_fundo") | int, states("input_number.slid_minuto_liga_fundo") | int) }}'
+    unit_of_measurement: " "
+    
+  horas_desliga_fundo:
+    friendly_name: Horas Desliga Relogio
+    value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.slid_hora_desliga_fundo") | int, states("input_number.slid_minuto_desliga_fundo") | int) }}'
+    unit_of_measurement: " "
+    
+  horas_liga_tv:
+    friendly_name: Horas Liga Relogio
+    value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.slid_hora_liga_tv") | int, states("input_number.slid_minuto_liga_tv") | int) }}'
+    unit_of_measurement: " "
+    
+  horas_desliga_tv:
+    friendly_name: Horas Desliga Relogio
+    value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.slid_hora_desliga_tv") | int, states("input_number.slid_minuto_desliga_tv") | int) }}'
+    unit_of_measurement: " "

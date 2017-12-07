@@ -1,0 +1,11 @@
+platform: template
+sensors:
+  leeco_bateria:
+    value_template: '{{ states.device_tracker.denis_leeco.attributes["battery"]}}'
+    unit_of_measurement: "%"
+    friendly_name: Leeco - Nivel Bateria
+    
+  samsung_bateria:
+    value_template: '{{ states.device_tracker.elida_samsung.attributes["battery"]}}'
+    unit_of_measurement: "%"
+    friendly_name: S4 - Nivel Bateria

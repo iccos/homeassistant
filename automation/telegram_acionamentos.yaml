@@ -1,0 +1,246 @@
+#--------------------------------------------------------------------------
+
+- alias: Liga Ar Condicionado
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/liga_ar'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.ar_condicionado_16
+    - delay: '00:00:02'
+    - service: notify.notifica_telegram
+      data:
+        message: 'Ar Condicionado Ligado'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'Ar Condicionado Ligado'
+        
+#--------------------------------------------------------------------------
+
+- alias: Desliga Ar Condicionado
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/desliga_ar'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.controle_ar_condicionado
+    - delay: '00:00:02'
+    - service: notify.notifica_telegram
+      data:
+        message: 'Ar Condicionado Desligado'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'Ar Condicionado Desligado'
+        
+#--------------------------------------------------------------------------   
+     
+- alias: Acende Luz Pedro Henrique
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/liga_luz_ph'
+  action:
+    - service: light.turn_on
+      entity_id: light.gateway_light_34ce00813667
+    - delay: '00:00:02'
+    - service: notify.notifica_telegram
+      data:
+        message: 'Luz Quarto Pedro Henrique Ligada'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'Luz Quarto Pedro Henrique Ligada'
+        
+#--------------------------------------------------------------------------
+        
+- alias: Apaga Luz Pedro Henrique
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/desliga_luz_ph'
+  action:
+    - service: light.turn_off
+      entity_id: light.gateway_light_34ce00813667
+    - delay: '00:00:02'
+    - service: notify.notifica_telegram
+      data:
+        message: 'Luz Quarto Pedro Henrique Desliga'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'Luz Quarto Pedro Henrique Desliga'
+        
+#--------------------------------------------------------------------------
+        
+- alias: Liga Luz Cozinha
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/liga_luz_cozinha'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.iluminacao_cozinha
+    - delay: '00:00:02'
+    - service: notify.notifica_telegram
+      data:
+        message: 'Iluminação da Cozinha Ligada'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'Iluminação da Cozinha Ligada'
+        
+#--------------------------------------------------------------------------    
+    
+- alias: Desliga Luz Cozinha
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/desliga_luz_cozinha'
+  action:
+    - service: switch.turn_off
+      entity_id: switch.iluminacao_cozinha
+    - delay: '00:00:02'
+    - service: notify.notifica_telegram
+      data:
+        message: 'Iluminação da Cozinha Desligada' 
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'Iluminação da Cozinha Desligada' 
+        
+#--------------------------------------------------------------------------
+
+- alias: Liga TV
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/liga_tv'
+  action: 
+    - service: switch.turn_on
+      entity_id: switch.tv_lg
+    - service: notify.notifica_telegram
+      data:
+        message: 'TV Ligada'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'TV Ligada'
+        
+#--------------------------------------------------------------------------
+      
+- alias: Desliga TV
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/desliga_tv'
+  action: 
+    - service: switch.turn_off
+      entity_id: switch.tv_lg
+    - service: notify.notifica_telegram
+      data:
+        message: 'TV Desligada'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'TV Desligada'
+        
+#--------------------------------------------------------------------------
+
+- alias: Liga Receptor
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/liga_receptor'
+  action: 
+    - service: switch.turn_on
+      entity_id: switch.receptor
+    - service: notify.notifica_telegram
+      data:
+        message: 'Receptor Ligado'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'Receptor Ligado'
+        
+#-------------------------------------------------------------------------- 
+     
+- alias: Desliga Receptor
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/desliga_receptor'
+  action: 
+    - service: switch.turn_off
+      entity_id: switch.receptor
+    - service: notify.notifica_telegram
+      data:
+        message: 'Receptor Desligado'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'Receptor Desligado'
+        
+#-------------------------------------------------------------------------- 
+       
+- alias: Acordando
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/acordando'
+  action:
+    - service: script.turn_on
+      entity_id: script.scr_acordando_notifica
+      
+#--------------------------------------------------------------------------   
+   
+- alias: Habilita Turbo
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/turbo'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.ar_condicionado_turbo
+    - service: notify.notifica_telegram
+      data:
+        message: 'Turbo Ligado'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'Turbo Ligado'
+        
+#-------------------------------------------------------------------------- 
+
+- alias: Habilita Doctor
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/doctor'
+  action:
+    - service: switch.turn_on
+      entity_id: switch.ar_condicionado_doctor
+    - service: notify.notifica_telegram
+      data:
+        message: 'Função Doctor Habilitada'
+    - service: notify.notifica_telegram_2
+      data:
+        message: 'Função Doctor Habilitada'
+        
+#-------------------------------------------------------------------------- 
+       
+- alias: Gelar Quarto
+  trigger: 
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/gelar'
+  action:
+    - service: script.turn_on
+      entity_id: script.scr_gelar
+              

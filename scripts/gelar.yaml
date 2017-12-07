@@ -1,0 +1,24 @@
+scr_gelar:
+  alias: Gelar
+  sequence:
+    - service: notify.notifica_telegram
+      data:
+        message: 'Iniciando'
+    - delay: '00:00:02'
+    - service: switch.turn_on
+      entity_id: switch.ar_condicionado_16
+    - service: notify.notifica_telegram
+      data:
+        message: 'Ar Condicionado Ligado'
+    - delay: '00:00:02'
+    - service: switch.turn_on
+      entity_id: switch.ar_condicionado_doctor
+    - service: notify.notifica_telegram
+      data:
+        message: 'Doctor Ligado'
+    - delay: '00:00:02'
+    - service: switch.turn_on
+      entity_id: switch.ar_condicionado_turbo
+    - service: notify.notifica_telegram
+      data:
+        message: 'Turbo Ligado'

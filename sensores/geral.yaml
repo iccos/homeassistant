@@ -1,0 +1,5 @@
+platform: mold_indicator
+indoor_temp_sensor: sensor.temperature_158d0001d6f829
+indoor_humidity_sensor: sensor.humidity_158d0001d6f829
+outdoor_temp_sensor: sensor.temperature_158d0001d82855
+calibration_factor: 2.0

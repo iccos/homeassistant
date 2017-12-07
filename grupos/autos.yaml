@@ -1,0 +1,6 @@
+autos:
+  name: Automações
+  view: true
+  icon: mdi:auto-upload
+  entities:
+    - group.grp_03

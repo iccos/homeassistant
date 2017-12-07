@@ -1,0 +1,7 @@
+grp_22:
+  name: Tarefas Domésticas
+  view: false
+  entities:
+    - calendar.casa
+    - calendar.inbox
+    - calendar.tarefas
